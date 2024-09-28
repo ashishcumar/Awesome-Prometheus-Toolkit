@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Text } from "@chakra-ui/react";
+import { Flex, Grid, Text } from "@chakra-ui/react";
 import github from "../assets/github.svg";
 import navLogo from "../assets/navLogo.svg";
 

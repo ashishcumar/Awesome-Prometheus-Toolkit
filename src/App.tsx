@@ -3,12 +3,10 @@ import "./App.css";
 import * as yaml from "js-yaml";
 import Navbar from "./components/Navbar";
 import {
+  Box,
   Flex,
   Grid,
   Input,
-  InputGroup,
-  InputLeftAddon,
-  InputRightAddon,
   Text,
 } from "@chakra-ui/react";
 import Footer from "./components/Footer";
@@ -69,30 +67,33 @@ function App() {
           >
             Browse Library
           </Text>
-          <InputGroup
-            style={{
-              margin: "12px 0",
-              zIndex: 1,
+          <Box
+            sx={{
+              width: "100%",
+              position: "relative",
+              height: "40px",
+              margin: "8px 0",
             }}
           >
-            <InputLeftAddon
-              sx={{
-                background: "white",
+            <img
+              src={searchIcon}
+              alt={searchIcon}
+              style={{
+                height: "16px",
+                width: "16px",
+                position: "absolute",
+                left: "10px",
+                top: 0,
+                bottom: 0,
+                margin: "auto",
               }}
-            >
-              <img
-                src={searchIcon}
-                alt={searchIcon}
-                style={{ height: "16px", width: "16px" }}
-              />
-            </InputLeftAddon>
+            />
             <Input
               placeholder="Seach for a component"
               sx={{
-                borderRight: "none",
-                borderLeft: "none",
                 fontSize: "12px",
                 fontWeight: "500",
+                padding: "0 36px",
                 "&:focus": {
                   border: "1px solid slate.200",
                   outline: "1px solid slate.200",
@@ -105,23 +106,25 @@ function App() {
               value={val}
               onChange={(e) => setVal(e.target.value)}
             />
-            <InputRightAddon
-              sx={{
-                background: "white",
-                borderLeft: "none",
+            <img
+              src={slashIcon}
+              alt={slashIcon}
+              style={{
+                height: "20px",
+                width: "20px",
+                position: "absolute",
+                right: "10px",
+                top: 0,
+                bottom: 0,
+                margin: "auto",
               }}
-            >
-              <img
-                src={slashIcon}
-                alt={slashIcon}
-                style={{ height: "20px", width: "20px" }}
-              />
-            </InputRightAddon>
-          </InputGroup>
+            />
+          </Box>
+
           <Grid>
             {browserLibrary.map((ruleObj) => {
               return (
-                <Grid key={ruleObj.title} sx={{marginBottom:'24px'}}>
+                <Grid key={ruleObj.title} sx={{ marginBottom: "24px" }}>
                   <Text
                     sx={{
                       fontSize: "10px",
@@ -135,10 +138,8 @@ function App() {
                   </Text>
                   <Flex
                     sx={{
-                      // gridTemplateColumns: "1fr 1fr 1fr",
                       gap: "24px",
-                      flexWrap:'wrap',
-                      // justifyContent:'space-between'
+                      flexWrap: "wrap",
                     }}
                   >
                     {ruleObj.rules
